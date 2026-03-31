@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JepTech Racing — Vintage Japanese Motorcycle Specialists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F3EFE4;
+    --cream-dark: #E8E2D3;
+    --black: #141210;
+    --charcoal: #2A2520;
+    --warm-gray: #6B6158;
+    --red: #C42B1A;
+    --red-light: #D93D2B;
+    /* California additions */
+    --gold: #D4880A;
+    --gold-light: #E8A020;
+    --gold-wash: #FBF0DC;   /* very pale gold — mid-century color block */
+    --gold-mid: #F2C96A;    /* warm highlight */
+    --serif: 'Barlow Condensed', sans-serif;
+    --body: 'Barlow', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--black);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(243, 239, 228, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(100,90,80,0.12);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--red); }
+
+  .nav-cta {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--black);
+    padding: 0.55rem 1.4rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--red); }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+  }
+
+  /* Haring-inspired abstract graphic — ghosted in hero background */
+  .hero-graphic {
+    position: absolute;
+    top: 0; right: 0;
+    width: 55%;
+    height: 100%;
+    opacity: 0.055;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Large JTR ghost text, same as before but shifted left */
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: -0.02em;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(160px, 26vw, 400px);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.07);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* Gold horizontal stripe — California light bleeding into hero bottom */
+  .hero-gold-stripe {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(60px, 10vw, 140px);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--cream);
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title .accent { color: var(--red); }
+
+  .hero-sub {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    gap: 2rem;
+  }
+
+  .hero-tagline {
+    font-weight: 300;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: rgba(243,239,228,0.6);
+    max-width: 440px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .hero-location {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(243,239,228,0.35);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.35;
+  }
+
+  .scroll-indicator span {
+    font-family: var(--serif);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: var(--cream);
+    animation: scrollDown 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ─── SECTION SHARED ──────────────────────────────────── */
+  section { padding: 7rem 3rem; }
+
+  .section-label {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(38px, 6vw, 80px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  /* ─── ABOUT ───────────────────────────────────────────── */
+  #about {
+    background: var(--cream);
+    border-top: 1px solid rgba(100,90,80,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Mid-century color block — gold wash panel behind the image */
+  #about::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 42%;
+    height: 100%;
+    background: var(--gold-wash);
+    z-index: 0;
+  }
+
+  /* Thin gold vertical rule — the accent line between panels */
+  #about::after {
+    content: '';
+    position: absolute;
+    top: 4rem; bottom: 4rem;
+    left: 42%;
+    width: 2px;
+    background: var(--gold);
+    opacity: 0.35;
+    z-index: 1;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    max-width: 1200px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-body {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.85;
+    margin-top: 2rem;
+  }
+
+  .about-body p + p { margin-top: 1.25rem; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(100,90,80,0.2);
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--black);
+    letter-spacing: -0.02em;
+  }
+
+  .stat-number span { color: var(--red); font-size: 2rem; }
+
+  .stat-label {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 0.4rem;
+  }
+
+  .about-right {
+    padding-top: 3.5rem;
+  }
+
+  .about-img-placeholder {
+    background: var(--cream-dark);
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(100,90,80,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-img-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(100,90,80,0.04) 30px,
+      rgba(100,90,80,0.04) 31px
+    );
+  }
+
+  .img-placeholder-label {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(100,90,80,0.4);
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+  }
+
+  /* ─── SERVICES ────────────────────────────────────────── */
+  #services {
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+
+  /* Gold top-edge accent on services — the California sun cresting the dark section */
+  #services::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  #services .section-title { color: var(--cream); }
+
+  .services-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    gap: 3rem;
+  }
+
+  .services-intro-right {
+    font-weight: 300;
+    font-size: 1rem;
+    color: rgba(243,239,228,0.5);
+    max-width: 380px;
+    line-height: 1.75;
+    font-style: italic;
+    flex-shrink: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .service-card {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .service-card:last-child { border-right: none; }
+  .service-card:hover { background: rgba(255,255,255,0.03); }
+
+  /* Gold hover underline (instead of red) — the California energy moment */
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 2.5rem; right: 2.5rem;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-number {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 5rem;
+    line-height: 1;
+    color: rgba(255,255,255,0.06);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    transition: color 0.3s;
+  }
+
+  .service-card:hover .service-number { color: rgba(212,136,10,0.12); }
+
+  .service-name {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(243,239,228,0.5);
+    line-height: 1.8;
+  }
+
+  .service-detail-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .service-detail-list li {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(243,239,228,0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  /* Gold dots on service list items */
+  .service-detail-list li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  /* ─── WORK / GALLERY ──────────────────────────────────── */
+  #work {
+    background: var(--cream);
+    border-top: 1px solid rgba(100,90,80,0.15);
+    position: relative;
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+
+  .work-social-links { display: flex; gap: 1rem; }
+
+  .social-link {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    border: 1px solid rgba(100,90,80,0.3);
+    padding: 0.55rem 1.2rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .social-link:hover {
+    background: var(--black);
+    color: var(--cream);
+    border-color: var(--black);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 8px;
+  }
+
+  .gallery-item {
+    background: var(--cream-dark);
+    border: 1px solid rgba(100,90,80,0.12);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* One gallery cell gets a gold-wash background — an unexpected color pop, Haring-adjacent */
+  .gallery-item.gold-accent {
+    background: var(--gold-wash);
+    border-color: rgba(212,136,10,0.2);
+  }
+
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+
+  .gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(100,90,80,0.04) 30px,
+      rgba(100,90,80,0.04) 31px
+    );
+  }
+
+  .gallery-item.gold-accent::before {
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(212,136,10,0.06) 30px,
+      rgba(212,136,10,0.06) 31px
+    );
+  }
+
+  .gallery-placeholder-text {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(100,90,80,0.3);
+    text-align: center;
+    position: relative;
+    padding: 1rem;
+  }
+
+  .gallery-item.gold-accent .gallery-placeholder-text {
+    color: rgba(150,100,10,0.45);
+  }
+
+  .coming-soon-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--black);
+    color: var(--cream);
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+  }
+
+  /* Haring-style abstract SVG in gallery — one large open cell */
+  .gallery-haring {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.18;
+  }
+
+  /* ─── CONTACT ─────────────────────────────────────────── */
+  #contact {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+
+  /* Gold stripe at contact top — bookends with services stripe */
+  #contact::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  #contact .section-title { color: var(--cream); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+
+  .contact-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(243,239,228,0.5);
+    line-height: 1.85;
+    font-style: italic;
+    margin-bottom: 3rem;
+  }
+
+  .contact-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .contact-item-label {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-item-value {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+  }
+
+  .contact-item-value a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item-value a:hover { color: var(--gold-light); }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(243,239,228,0.4);
+  }
+
+  .form-input, .form-select, .form-textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--cream);
+    font-family: var(--body);
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: rgba(243,239,228,0.2);
+  }
+
+  /* Gold focus ring */
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: rgba(212,136,10,0.55);
+  }
+
+  .form-select {
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(243,239,228,0.3)' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    cursor: pointer;
+  }
+
+  .form-select option { background: var(--charcoal); color: var(--cream); }
+  .form-textarea { resize: vertical; min-height: 120px; }
+
+  /* Gold submit — the California moment in the form */
+  .form-submit {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(243,239,228,0.35);
+  }
+
+  .footer-logo span { color: rgba(196,43,26,0.6); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(243,239,228,0.2);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-social { display: flex; gap: 1.5rem; }
+
+  .footer-social a {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(243,239,228,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-social a:hover { color: var(--gold-light); }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    #hero { padding: 0 1.5rem 4rem; }
+    #about::before { width: 100%; height: 340px; }
+    #about::after { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-img-placeholder { aspect-ratio: 16/9; }
+    .services-intro { flex-direction: column; gap: 1.5rem; }
+    .services-intro-right { max-width: 100%; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .service-card:last-child { border-bottom: none; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:nth-child(1) { grid-column: span 2; height: 220px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">JepTech <span>Racing</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">JTR</div>
+
+  <!-- Haring-inspired abstract graphic — ghosted in upper right -->
+  <div class="hero-graphic">
+    <svg viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <!-- Abstract motorcycle-adjacent shapes in Haring's bold outline style -->
+      <!-- Wheel form — bold circle, thick stroke -->
+      <circle cx="150" cy="340" r="110" fill="none" stroke="#F3EFE4" stroke-width="14" stroke-linecap="round"/>
+      <circle cx="150" cy="340" r="22" fill="none" stroke="#F3EFE4" stroke-width="10"/>
+      <!-- Spokes suggestion -->
+      <line x1="150" y1="230" x2="150" y2="450" stroke="#F3EFE4" stroke-width="6" stroke-linecap="round"/>
+      <line x1="40" y1="340" x2="260" y2="340" stroke="#F3EFE4" stroke-width="6" stroke-linecap="round"/>
+      <line x1="72" y1="262" x2="228" y2="418" stroke="#F3EFE4" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+      <line x1="228" y1="262" x2="72" y2="418" stroke="#F3EFE4" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+      <!-- Engine/frame abstraction — bold angular shapes -->
+      <path d="M260 310 L340 260 L420 280 L440 340 L380 380 L280 370 Z"
+            fill="none" stroke="#F3EFE4" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- Carb/intake circle — nod to the CB750 work -->
+      <circle cx="380" cy="200" r="48" fill="none" stroke="#F3EFE4" stroke-width="10"/>
+      <circle cx="380" cy="200" r="18" fill="none" stroke="#F3EFE4" stroke-width="8"/>
+      <!-- Exhaust pipe lines -->
+      <path d="M420 350 Q460 370 470 420 Q474 448 450 460"
+            fill="none" stroke="#F3EFE4" stroke-width="10" stroke-linecap="round"/>
+      <path d="M410 360 Q455 385 462 435 Q465 458 440 468"
+            fill="none" stroke="#F3EFE4" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+      <!-- Speed lines — Haring energy marks -->
+      <line x1="30" y1="120" x2="120" y2="120" stroke="#F3EFE4" stroke-width="8" stroke-linecap="round"/>
+      <line x1="55" y1="148" x2="130" y2="148" stroke="#F3EFE4" stroke-width="5" stroke-linecap="round"/>
+      <line x1="40" y1="172" x2="100" y2="172" stroke="#F3EFE4" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <!-- Haring-style radiant dots — energy burst near engine -->
+      <circle cx="320" cy="170" r="7" fill="#F3EFE4"/>
+      <circle cx="298" cy="148" r="5" fill="#F3EFE4" opacity="0.7"/>
+      <circle cx="344" cy="140" r="5" fill="#F3EFE4" opacity="0.7"/>
+      <circle cx="272" cy="168" r="4" fill="#F3EFE4" opacity="0.5"/>
+      <circle cx="360" cy="158" r="4" fill="#F3EFE4" opacity="0.5"/>
+      <!-- Wrench abstraction — bold cross shape -->
+      <rect x="60" y="420" width="16" height="70" rx="8" fill="#F3EFE4" transform="rotate(-30 68 455)"/>
+      <rect x="44" y="450" width="50" height="14" rx="7" fill="#F3EFE4" transform="rotate(-30 69 457)"/>
+    </svg>
+  </div>
+
+  <div class="hero-gold-stripe"></div>
+
+  <div class="hero-eyebrow">Mooresville, NC &mdash; Est. 2024</div>
+
+  <h1 class="hero-title">
+    Jep<span class="accent">Tech</span><br>Racing
+  </h1>
+
+  <div class="hero-sub">
+    <p class="hero-tagline">Vintage Japanese motorcycle maintenance, restoration, and engine work. Old iron, kept right.</p>
+    <div class="hero-location">Honda &middot; Suzuki &middot; Kawasaki &middot; Yamaha</div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="about-img-placeholder">
+        <div class="img-placeholder-label">Shop photo<br>coming soon</div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Built on<br>old iron</h2>
+      <div class="about-body">
+        <p>JepTech Racing is a Mooresville, NC-based workshop specializing exclusively in vintage Japanese motorcycles. We work on the bikes that matter — CB750s, GS-series Suzukis, early Kawasakis, and the rest of the golden era that defined what motorcycles could be.</p>
+        <p>No fluff, no shortcuts. Just careful, technically precise work done by someone who actually rides and wrenches on these machines. Whether it's a carburetor that's never run right or a full engine teardown, it gets done correctly.</p>
+        <p>Follow the builds on Instagram and YouTube as they come together.</p>
+      </div>
+      <div class="about-stats">
+        <div>
+          <div class="stat-number">1970<span>s–</span>90<span>s</span></div>
+          <div class="stat-label">Era of specialty</div>
+        </div>
+        <div>
+          <div class="stat-number">100<span>%</span></div>
+          <div class="stat-label">Vintage Japanese focus</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div class="services-intro-left">
+      <div class="section-label">Services</div>
+      <h2 class="section-title">What we<br>do</h2>
+    </div>
+    <p class="services-intro-right">Focused, methodical work on vintage Japanese machines. We don't work on everything — we work on this.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <h3 class="service-name">Carburetor<br>Rebuild &amp; Tune</h3>
+      <p class="service-desc">Full disassembly, ultrasonic cleaning, and rebuild of CV and slide-type carburetors. Synchronization, jetting, pilot circuit work.</p>
+      <ul class="service-detail-list">
+        <li>Keihin CV carbs (VB, PD series)</li>
+        <li>Mikuni VM &amp; BS series</li>
+        <li>Full bench sync &amp; road tune</li>
+        <li>Pilot / main circuit overhaul</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <h3 class="service-name">General<br>Maintenance</h3>
+      <p class="service-desc">Routine service and tune-ups to keep vintage machines running as they should. Valve adjustments, ignition timing, fluid service.</p>
+      <ul class="service-detail-list">
+        <li>Valve clearance adjustment</li>
+        <li>Ignition points &amp; timing</li>
+        <li>Oil &amp; filter service</li>
+        <li>Brake inspection &amp; service</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <h3 class="service-name">Engine<br>Rebuilds</h3>
+      <p class="service-desc">Top-end and full engine teardowns. Cam chain, valve seals, head gaskets, bore and piston work on vintage inline-fours and twins.</p>
+      <ul class="service-detail-list">
+        <li>Top-end refreshes</li>
+        <li>Full engine disassembly</li>
+        <li>Cam chain replacement</li>
+        <li>Bore &amp; piston assessment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-header">
+    <div>
+      <div class="section-label">Work</div>
+      <h2 class="section-title">The builds</h2>
+    </div>
+    <div class="work-social-links">
+      <a href="#" class="social-link">&#8599; Instagram</a>
+      <a href="#" class="social-link">&#8599; YouTube</a>
+    </div>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder-text">1979 Honda CB750K DOHC<br>Full carb rebuild in progress</div>
+      <div class="coming-soon-badge">Coming soon</div>
+    </div>
+    <!-- Gold-accent cell — the unexpected color pop -->
+    <div class="gallery-item gold-accent">
+      <!-- Haring-style abstract mark ghosted in -->
+      <div class="gallery-haring">
+        <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" width="140" height="140">
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#8B6000" stroke-width="10"/>
+          <circle cx="80" cy="80" r="22" fill="none" stroke="#8B6000" stroke-width="8"/>
+          <line x1="80" y1="20" x2="80" y2="140" stroke="#8B6000" stroke-width="5"/>
+          <line x1="20" y1="80" x2="140" y2="80" stroke="#8B6000" stroke-width="5"/>
+          <circle cx="80" cy="50" r="5" fill="#8B6000"/>
+          <circle cx="110" cy="80" r="5" fill="#8B6000"/>
+          <circle cx="80" cy="110" r="5" fill="#8B6000"/>
+          <circle cx="50" cy="80" r="5" fill="#8B6000"/>
+        </svg>
+      </div>
+      <div class="gallery-placeholder-text">Build gallery<br>coming soon</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder-text">Build gallery<br>coming soon</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder-text">1982 Suzuki GS550L<br>coming soon</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder-text">Build gallery<br>coming soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's talk<br>about your bike</h2>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <p class="contact-desc">Based in Mooresville, NC. Inquiries welcome — describe your bike and what it needs and we'll take it from there.</p>
+      <div class="contact-info-block">
+        <div>
+          <div class="contact-item-label">Location</div>
+          <div class="contact-item-value">Mooresville, NC</div>
+        </div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value"><a href="mailto:hello@jeptechracing.com">hello@jeptechracing.com</a></div>
+        </div>
+        <div>
+          <div class="contact-item-label">Follow the builds</div>
+          <div class="contact-item-value">
+            <a href="#">@jeptechracing</a> &nbsp;&middot;&nbsp; <a href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Bike</label>
+        <input type="text" class="form-input" placeholder="Year, make, model — e.g. 1982 Suzuki GS550L">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service needed</label>
+        <select class="form-select form-input">
+          <option value="" disabled selected>Select a service</option>
+          <option>Carburetor rebuild / tune</option>
+          <option>General maintenance</option>
+          <option>Engine rebuild</option>
+          <option>Not sure — need assessment</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tell us more</label>
+        <textarea class="form-textarea" placeholder="What's going on with the bike?"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Inquiry &rarr;</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">JepTech <span>Racing</span></div>
+  <div class="footer-copy">&copy; 2024 JepTech Racing &mdash; Mooresville, NC</div>
+  <div class="footer-social">
+    <a href="#">Instagram</a>
+    <a href="#">YouTube</a>
+  </div>
+</footer>
+
+</body>
+</html>
